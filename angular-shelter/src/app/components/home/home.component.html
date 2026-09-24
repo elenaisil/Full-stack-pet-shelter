@@ -1,0 +1,92 @@
+
+
+<!-- Hero Section -->
+<div class="hero" id="home">
+  <h1>OPEN YOUR HEART AND YOUR HOME</h1>
+  <h2>Giving Every Pet a Second Chance</h2>
+  <br>
+  <p>WHERE RESCUE, CARE, AND COMMUNITY COME TOGETHER UNTIL EVERY PET HAS A HOME.</p>
+  <a routerLink="/pets" class="btn-first">VIEW AVAILABLE ANIMALS</a>
+  <button class="btn-second" (click)="openDonateModal()">DONATE NOW</button>
+</div>
+
+<!-- Stats -->
+<div class="stats">
+  <div class="stat"><h3>{{totalPets}}</h3><p>Total Pets</p></div>
+  <div class="stat"><h3>{{availablePets}}</h3><p>Available for Adoption</p></div>
+  <div class="stat"><h3>{{adoptionsCount}}</h3><p>Happy Adoptions</p></div>
+  <div class="stat"><h3>{{sheltersCount}}</h3><p>Partner Shelters</p></div>
+</div>
+
+<!-- About Section -->
+<div class="about-section" id="about">
+  <div class="about-content">
+    <h2 class="section-title">About Us</h2>
+    <p>At A.D.O.P.T., we believe every pet deserves a chance not just to survive, but to thrive. From the moment a pet enters our care center, we provide comprehensive support: veterinary services, behavioral guidance, and the love they need to heal.</p>
+    <p>When you adopt from A.D.O.P.T., you're not just gaining a pet - you're saving a life. Every adoption opens a space for another animal in need, giving them a second chance with love and security.</p>
+    <a routerLink="/about" class="read-more-btn">Read More →</a>
+  </div>
+</div>
+
+<!-- Pets Section -->
+<div class="pets-section" id="pets">
+  <h2 class="section-title">Meet Our Babies</h2>
+  <div class="pets-grid">
+    <div *ngFor="let pet of pets" class="pet-card">
+      <img [src]="getPetImage(pet.species)" [alt]="pet.name">
+      <div class="pet-info">
+        <h3>{{pet.name}}</h3>
+        <p>🐾 Species: {{pet.species}}</p>
+        <p>📅 Age: {{pet.age}} years</p>
+        <p>⚥ Gender: {{pet.gender}}</p>
+        <button class="adopt-btn" (click)="openAdoptModal(pet)">Adopt {{pet.name}}</button>
+      </div>
+    </div>
+  </div>
+  <div class="text-center">
+    <a routerLink="/pets" class="read-more-btn">Learn More →</a>
+  </div>
+</div>
+
+<!-- Shelters Section -->
+<div class="shelters-section" id="shelters">
+  <h2 class="section-title">Our Partner Shelters</h2>
+  <div class="shelters-grid">
+    <div *ngFor="let shelter of shelters" class="shelter-card">
+      <h3>🏢 {{shelter.name}}</h3>
+      <p>📍 {{shelter.location}}</p>
+      <p>📞 {{shelter.phone}}</p>
+      <p>🐾 Capacity: {{shelter.capacity}}</p>
+    </div>
+  </div>
+</div>
+
+<!-- Donate Modal -->
+<div class="modal" [style.display]="showDonateModal ? 'flex' : 'none'" (click)="closeDonateModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h3>Make a Donation</h3>
+    <p>Thank you for supporting our mission!</p>
+    <input type="number" [(ngModel)]="donationAmount" placeholder="Enter amount ($)">
+    <input type="text" [(ngModel)]="donorName" placeholder="Your Name">
+    <div class="modal-buttons">
+      <button (click)="processDonation()">Donate</button>
+      <button (click)="closeDonateModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Adoption Modal -->
+<div class="modal" [style.display]="showAdoptModal ? 'flex' : 'none'" (click)="closeAdoptModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h3>Adopt {{selectedPet?.name}}</h3>
+    <input type="text" [(ngModel)]="adopter.name" placeholder="Full Name *" required>
+    <input type="email" [(ngModel)]="adopter.email" placeholder="Email *" required>
+    <input type="text" [(ngModel)]="adopter.phone" placeholder="Phone">
+    <input type="text" [(ngModel)]="adopter.address" placeholder="Address">
+    <input type="text" [(ngModel)]="adopter.city" placeholder="City">
+    <div class="modal-buttons">
+      <button (click)="confirmAdoption()">Complete Adoption</button>
+      <button (click)="closeAdoptModal()">Cancel</button>
+    </div>
+  </div>
+</div>

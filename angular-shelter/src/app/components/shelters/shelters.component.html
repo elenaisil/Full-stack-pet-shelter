@@ -1,0 +1,28 @@
+
+
+<div class="page-header">
+  <h1>Our Partner Shelters</h1>
+  <p>Find a shelter near you</p>
+</div>
+
+<div class="shelters-section">
+  <div *ngIf="loading" class="loading">
+    Loading shelters...
+  </div>
+
+
+  <div class="shelters-grid" *ngIf="!loading && shelters.length > 0">
+    <div *ngFor="let shelter of shelters" class="shelter-card">
+      <h3>🏢 {{shelter.name}}</h3>
+      <p>📍 {{shelter.location || 'Location not specified'}}</p>
+      <p>📞 {{shelter.phone || 'Phone not specified'}}</p>
+      <p>🐾 Capacity: {{shelter.capacity || 'N/A'}}</p>
+      <p>📅 Since: {{shelter.creation_day | date:'mediumDate'}}</p>
+    </div>
+  </div>
+
+
+  <div *ngIf="!loading && shelters.length === 0" class="loading">
+    No shelters found.
+  </div>
+</div>

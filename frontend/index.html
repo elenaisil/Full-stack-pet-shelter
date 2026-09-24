@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADOPT Pet Shelter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+      
+    <img class="logo1" src="images/logoFinal.jpg" >
+
+        <div class="logo">ADOPT <span>PET SHELTER</span></div>
+        <div class="nav">
+            <a href="index.html">HOME</a>
+            <a href="pets.html">PETS</a>
+            <a onclick="scrollToSection('shelters')">SHELTERS</a>
+            <a href="about.html">ABOUT</a>
+            <a onclick="scrollToSection('contact')">CONTACT</a>
+        </div>
+    </div>
+
+    <div class="hero" id="home">
+        <h1>OPEN YOUR HEART AND YOUR HOME</h1>
+        <h2>Giving Every Pet a Second Chance</h2>
+        <br>
+        <p>WHERE RESCUE, CARE, AND COMMUNITY COME TOGETHER UNTIL EVERY PET HAS A HOME.</p>
+        <a href="pets.html" class="btn-first">VIEW AVAILABLE ANIMALS</a>
+        <button class="btn-second" onclick="openDonateModal()">DONATE NOW</button>
+    </div>
+
+    <div class="stats">
+        <div class="stat"><h3 id="totalPets">0</h3><p>Total Pets</p></div>
+        <div class="stat"><h3 id="availablePets">0</h3><p>Available for Adoption</p></div>
+        <div class="stat"><h3 id="adoptionsCount">0</h3><p>Happy Adoptions</p></div>
+        <div class="stat"><h3 id="sheltersCount">0</h3><p>Partner Shelters</p></div>
+    </div>
+
+<div class="about-section" id="about">
+    <div class="about-content">
+        <h2 class="section-title">About Us</h2>
+        <p>At A.D.O.P.T., we believe every pet deserves a chance not just to survive, but to thrive. From the moment a pet enters our care center, we provide comprehensive support: veterinary services, behavioral guidance, and the love they need to heal.</p>
+        <p>When you adopt from A.D.O.P.T., you're not just gaining a pet - you're saving a life. Every adoption opens a space for another animal in need, giving them a second chance with love and security.</p>
+        <a href="about.html" class="read-more-btn">Read More →</a>
+    </div>
+</div>
+
+    <div class="pets-section" id="pets">
+        <h2 class="section-title">Meet Our Babies</h2>
+        <div id="petsList" class="pets-grid">
+            <div class="loading">Loading pets...</div>
+        </div>
+        <a href="pets.html" class="read-more-btn">Learn More →</a>
+    </div>
+
+    <div class="shelters-section" id="shelters">
+        <h2 class="section-title">Our Partner Shelters</h2>
+        <div id="sheltersList" class="shelters-grid">
+            <div class="loading">Loading shelters...</div>
+        </div>
+    </div>
+
+    <div class="footer" id="contact">
+        <p>📍 Pecs, Hungary, 7633</p>
+        <p>📞 +36 630-355-2299</p>
+        <p>✉️ info@adoptpetshelter.org</p>
+        <p style="margin-top: 20px;">&copy; 2026 ADOPT Pet Shelter. All rights reserved.</p>
+    </div>
+
+
+    <div id="donateModal" class="modal">
+        <div class="modal-content">
+            <h3>Make a Donation</h3>
+            <p>Thank you for supporting our mission!</p>
+            <input type="number" id="donationAmount" placeholder="Enter amount ($)" step="10">
+            <input type="text" id="donorName" placeholder="Your Name">
+            <input type="email" id="donorEmail" placeholder="Your Email">
+            <div class="modal-buttons">
+                <button onclick="processDonation()">Donate</button>
+                <button onclick="closeDonateModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- adoption -->
+    <div id="adoptModal" class="modal">
+        <div class="modal-content">
+            <h3 id="adoptModalTitle">Adopt a Pet</h3>
+            <input type="text" id="adopterName" placeholder="Full Name *" required>
+            <input type="email" id="adopterEmail" placeholder="Email *" required>
+            <input type="tel" id="adopterPhone" placeholder="Phone">
+            <input type="text" id="adopterAddress" placeholder="Address">
+            <input type="text" id="adopterCity" placeholder="City">
+            <div class="modal-buttons">
+                <button onclick="confirmAdoption()">Complete Adoption</button>
+                <button onclick="closeAdoptModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

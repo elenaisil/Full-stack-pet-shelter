@@ -1,0 +1,5 @@
+config -> for db connection
+controller -> bus logic
+routes -> drect url to specific controller
+server -> entry point
+.env

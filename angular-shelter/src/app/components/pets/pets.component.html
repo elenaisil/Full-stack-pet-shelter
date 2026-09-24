@@ -1,0 +1,58 @@
+
+
+<div class="page-header">
+  <h1>All Our Adorable Pets</h1>
+  <p>Find your new best friend today!</p>
+</div>
+
+<div class="pets-section">
+
+  <div *ngIf="loading" class="loading">
+    Loading pets...
+  </div>
+
+  
+  <div class="pets-grid" *ngIf="!loading && allPets.length > 0">
+    <div *ngFor="let pet of allPets" class="pet-card">
+      <img [src]="petImages[pet.species] || defaultImage" [alt]="pet.name">
+      <div class="pet-info">
+        <h3>{{pet.name}}</h3>
+        <p>🐾 Species: {{pet.species || 'Unknown'}}</p>
+        <p>📅 Age: {{pet.age || 'Unknown'}} years</p>
+        <p>⚥ Gender: {{pet.gender || 'Unknown'}}</p>
+        <p>
+          🏠 Status:
+          <span *ngIf="!pet.adopted">❤️ Available</span>
+          <span *ngIf="pet.adopted">✓ Adopted</span>
+        </p>
+        <button *ngIf="!pet.adopted" class="adopt-btn" (click)="openAdoptModal(pet)">
+          Adopt {{pet.name}}
+        </button>
+        <button *ngIf="pet.adopted" class="adopt-btn" disabled>
+          Already Adopted
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!--if no pets -->
+  <div *ngIf="!loading && allPets.length === 0" class="loading">
+    No pets found.
+  </div>
+</div>
+
+<!-- ADOPTION MODAL -->
+<div class="modal" [style.display]="showAdoptModal ? 'flex' : 'none'">
+  <div class="modal-content">
+    <h2>Adopt {{selectedPet?.name}}</h2>
+    <input type="text" [(ngModel)]="adopter.name" placeholder="Full Name">
+    <input type="email" [(ngModel)]="adopter.email" placeholder="Email">
+    <input type="text" [(ngModel)]="adopter.phone" placeholder="Phone">
+    <input type="text" [(ngModel)]="adopter.address" placeholder="Address">
+    <input type="text" [(ngModel)]="adopter.city" placeholder="City">
+    <div class="modal-buttons">
+      <button (click)="confirmAdoption()">Complete Adoption</button>
+      <button (click)="closeAdoptModal()">Cancel</button>
+    </div>
+  </div>
+</div>

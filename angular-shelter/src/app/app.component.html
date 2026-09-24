@@ -1,0 +1,21 @@
+
+<!-- Header -->
+<div class="header">
+  <img class="logo1" src="assets/images/logoFinal.jpg" alt="Logo">
+  <div class="logo">ADOPT <span>PET SHELTER</span></div>
+  <div class="nav">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">HOME</a>
+    <a routerLink="/pets" routerLinkActive="active">PETS</a>
+    <a routerLink="/shelters" routerLinkActive="active">SHELTERS</a>
+    <a routerLink="/about" routerLinkActive="active">ABOUT</a>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
+
+<div class="footer" id="contact">
+  <p>📍 Pecs, Hungary, 7633</p>
+  <p>📞 +36 630-355-2299</p>
+  <p>✉️ info@adoptpetshelter.org</p>
+  <p style="margin-top: 20px;">&copy; 2026 ADOPT Pet Shelter. All rights reserved.</p>
+</div>
