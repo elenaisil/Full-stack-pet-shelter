@@ -90,18 +90,7 @@ pet     ──< adoption     (one pet can have many application records)
 - 👑 **Admin Controls** — Admins can approve/reject applications and manage all data
 - 📖 **API Docs** — Full Swagger UI documentation at `/api-docs`
 
----
 
-## 👩‍💻 Team
-
-| Name                      | Role     |
-|---------------------------|----------|
-| Isil Sengul               | Frontend |
-| Chea Rithea Vatey         | Backend  |
-| Meriem Chaabani           | Frontend |
-| Dana Lorena Montes Gamboa | Backend  |
-
----
 
 [//]: # (> 📍 Pecs, Hungary, 7633 &nbsp;|&nbsp; 📞 +36 630-355-2299 &nbsp;|&nbsp; ✉️ info@adoptpetshelter.org  )
 
